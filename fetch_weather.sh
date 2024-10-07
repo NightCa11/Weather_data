@@ -46,7 +46,7 @@ echo "Humidity: $humidity%"
 echo "Weather Description: $description"
 echo "Timestamp: $timestamp"
 
-#Inserting the data into the mysql database - EOF is used to send out as input into the mysql command
+#Inserting the data into the mysql database - EOF is used to send out as input into the mysql command, "weather" is the name of the table
 
 mysql -u"$DB_USER" -p"$DB_PASS" "$DB_NAME" <<EOF
     INSERT INTO weather (city, temperature, humidity, weather_description, timestamp)
