@@ -15,7 +15,7 @@ DB_PASSWORD="some password"
 DB_NAME="Weather_data"
 
 
-#Fetch weather data using curl
+#Fetch weather data using curl - the response variable is used to campture the output
 
 response=$(curl -s -G "$BASE_URL" --data-urlencode "q=$CITY" --data-urlencode "appid=$API_KEY" --data-urlencode "units=$UNITS")
 
@@ -30,7 +30,7 @@ if [ "$cod" -ne 200 ]; then
 fi
 
 
-#Exctract desired fields using jq
+#Exctract desired fields using jq which is used for processing json data 
 
 temperature=$(echo "$response" | jq '.main.temp')
 humidity=$(echo "$response" | jq '.main.humidity')
@@ -45,6 +45,8 @@ echo "Temperature: $temperature°C"
 echo "Humidity: $humidity%"
 echo "Weather Description: $description"
 echo "Timestamp: $timestamp"
+
+#Inserting the data into the mysql database - EOF is used to send out as input into the mysql command
 
 mysql -u"$DB_USER" -p"$DB_PASS" "$DB_NAME" <<EOF
     INSERT INTO weather (city, temperature, humidity, weather_description, timestamp)
