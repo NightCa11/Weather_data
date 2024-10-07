@@ -4,14 +4,14 @@
 
 #Configuration
 
-API_KEY="91ee90766d91ba98334075b27e17580f"
+API_KEY="some key"
 CITY="${1:-New York}"
 UNITS="metric"
 BASE_URL="https://api.openweathermap.org/data/2.5/weather"
 
 #Databse cedentials
 DB_USER="root"
-DB_PASSWORD="Nachos123"
+DB_PASSWORD="some password"
 DB_NAME="Weather_data"
 
 
